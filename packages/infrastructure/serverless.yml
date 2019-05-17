@@ -1,0 +1,36 @@
+service: lunch-picker
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  s3Sync:
+    - bucketName: ${self:resources.Resources.WebAssets.Properties.BucketName}
+      localDir: ../app-web/build
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+  stage: ${opt:stage, 'dev'}
+
+resources:
+  Resources:
+    WebAssets:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ds-${self:service}-${self:provider.stage}
+        WebsiteConfiguration:
+          IndexDocument: index.html
+
+    WebAssetsPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: !Ref WebAssets
+        PolicyDocument:
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Join ['', ['arn:aws:s3:::', !Ref WebAssets, '/*']]
+              Principal: '*'
