@@ -1,3 +1,3 @@
-import app from './app'
+import graphql from './graphql'
 
-export default app
+export default graphql.createHandler()

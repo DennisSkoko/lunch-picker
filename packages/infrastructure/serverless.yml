@@ -1,6 +1,7 @@
 service: lunch-picker
 
 plugins:
+  - serverless-offline
   - serverless-s3-sync
 
 custom:
@@ -18,8 +19,9 @@ functions:
   api:
     handler: src/handlers/api.handler
     events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
+      - http:
+          path: /graphql
+          method: ANY
 
 resources:
   Resources:
