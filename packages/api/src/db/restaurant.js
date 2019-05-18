@@ -1,24 +1,26 @@
+const _ = require('lodash/fp')
 const database = require('../database')
+const util = require('../util')
 
 const { RESTAURANT_TABLE } = process.env
 
 module.exports = {
-  async all () {
-    const res = await database
+  all () {
+    return database
       .scan({ TableName: RESTAURANT_TABLE })
       .promise()
-
-    return res.Items.map(item => ({ name: item.Name }))
+      .then(_.get('Items'))
+      .then(_.map(util.toCamelCase))
   },
 
-  async get (name) {
-    const res = await database
+  get (name) {
+    return database
       .get({
         TableName: RESTAURANT_TABLE,
         Key: { Name: name }
       })
       .promise()
-
-    return { name: res.Item.Name }
+      .then(_.get('Item'))
+      .then(res => res ? util.toCamelCase(res) : null)
   }
 }
