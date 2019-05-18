@@ -14,6 +14,13 @@ provider:
   region: eu-central-1
   stage: ${opt:stage, 'dev'}
 
+functions:
+  api:
+    handler: src/handlers/api.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
 resources:
   Resources:
     WebAssets:
