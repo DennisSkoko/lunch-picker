@@ -22,6 +22,8 @@ functions:
       - http:
           path: /graphql
           method: ANY
+    environment:
+      NODE_ENV: production
 
 resources:
   Resources:
