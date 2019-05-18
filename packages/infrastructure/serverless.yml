@@ -1,7 +1,6 @@
 service: lunch-picker
 
 plugins:
-  - serverless-offline
   - serverless-s3-sync
 
 custom:

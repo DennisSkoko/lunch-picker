@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "start": "sls offline start",
     "build-packages": "node src/scripts/build.js",
     "deploy": "sls deploy",
     "sync": "sls s3sync",
@@ -9,7 +8,6 @@
   "dependencies": {
     "lunch-picker-api": "file:../api",
     "serverless": "^1.42.3",
-    "serverless-offline": "^4.10.3",
     "serverless-s3-sync": "^1.8.0"
   }
 }
