@@ -14,6 +14,12 @@ provider:
   runtime: nodejs8.10
   region: eu-central-1
   stage: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Scan
+        - dynamodb:GetItem
+      Resource: !GetAtt RestaurantTable.Arn
 
 functions:
   api:
@@ -24,6 +30,7 @@ functions:
           method: ANY
     environment:
       NODE_ENV: production
+      RESTAURANT_TABLE: !Ref RestaurantTable
 
 resources:
   Resources:
@@ -45,3 +52,17 @@ resources:
                 - s3:GetObject
               Resource: !Join ['', ['arn:aws:s3:::', !Ref WebAssets, '/*']]
               Principal: '*'
+
+    RestaurantTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: Name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: Name
+            KeyType: HASH
+        BillingMode: PROVISIONED
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

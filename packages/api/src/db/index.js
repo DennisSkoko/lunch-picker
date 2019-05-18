@@ -1,3 +1,3 @@
-const restaurant = require('./restaurants')
+const restaurant = require('./restaurant')
 
 module.exports = { restaurant }
