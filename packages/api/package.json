@@ -4,7 +4,8 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
-    "build:w": "tsc -w"
+    "build:w": "tsc -w",
+    "lint": "eslint --ignore-path .gitignore --ext .ts ."
   },
   "dependencies": {
     "express": "^4.17.0"
@@ -12,6 +13,14 @@
   "devDependencies": {
     "@types/express": "^4.16.1",
     "@types/node": "^12.0.2",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "typescript": "^3.4.5"
   }
 }

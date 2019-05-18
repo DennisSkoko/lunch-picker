@@ -4,8 +4,14 @@
     "module": "commonjs",
     "outDir": "./build",
     "rootDir": "./src",
+    "esModuleInterop": true,
     "strict": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true
   }
 }
