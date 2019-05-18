@@ -1,13 +1,3 @@
 {
-  "extends": [
-    "standard",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "rules": {
-    "@typescript-eslint/indent": ["error", 2]
-  }
+  "extends": "standard"
 }

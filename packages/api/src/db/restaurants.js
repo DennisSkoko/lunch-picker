@@ -4,12 +4,12 @@ const db = [
   { name: 'Zocalo' }
 ]
 
-export default {
+module.exports = {
   all () {
     return db
   },
 
-  get (name: string) {
+  get (name) {
     return db.find(restaurant => restaurant.name === name)
   }
 }

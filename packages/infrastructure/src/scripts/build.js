@@ -9,8 +9,7 @@ const PACKAGES_FOLDER = path.resolve(__dirname, '../../..')
 const exec = util.promisify(childProcess.exec)
 
 const packages = [
-  'app-web',
-  'api'
+  'app-web'
 ]
 
 async function main () {

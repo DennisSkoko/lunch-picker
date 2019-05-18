@@ -1,5 +1,5 @@
-import { ApolloServer } from 'apollo-server-lambda'
-import schema from './schema'
+const { ApolloServer } = require('apollo-server-lambda')
+const schema = require('./schema')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -9,4 +9,4 @@ const graphql = new ApolloServer({
   playground: !isProd
 })
 
-export default graphql
+module.exports = graphql

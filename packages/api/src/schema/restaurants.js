@@ -1,5 +1,4 @@
-import { IResolvers } from 'apollo-server-lambda'
-import db from '../db'
+const db = require('../db')
 
 const typeDef = `
 type Restaurant {
@@ -10,9 +9,9 @@ extend type Query {
   restaurants: [Restaurant!]!
   restaurant(name: String!): Restaurant
 }
-`;
+`
 
-const resolvers: IResolvers = {
+const resolvers = {
   Query: {
     restaurants () {
       return db.restaurant.all()
@@ -24,4 +23,4 @@ const resolvers: IResolvers = {
   }
 }
 
-export { typeDef, resolvers }
+module.exports = { typeDef, resolvers }
