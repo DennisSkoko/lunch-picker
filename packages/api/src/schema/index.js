@@ -4,6 +4,7 @@ const restaurant = require('./restaurant')
 
 const base = `
 type Query
+type Mutation
 `
 
 module.exports = makeExecutableSchema({

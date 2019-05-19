@@ -22,5 +22,18 @@ module.exports = {
       .promise()
       .then(_.get('Item'))
       .then(res => res ? util.toCamelCase(res) : null)
+  },
+
+  put (restaurant) {
+    return database
+      .put({
+        TableName: RESTAURANT_TABLE,
+        Item: util.toPascalCase(restaurant),
+        ReturnValues: 'NONE',
+        ReturnConsumedCapacity: 'NONE',
+        ReturnItemCollectionMetrics: 'NONE'
+      })
+      .promise()
+      .then(() => null)
   }
 }

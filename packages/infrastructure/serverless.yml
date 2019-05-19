@@ -18,6 +18,7 @@ provider:
       Action:
         - dynamodb:Scan
         - dynamodb:GetItem
+        - dynamodb:PutItem
       Resource: !GetAtt RestaurantTable.Arn
 
 functions:

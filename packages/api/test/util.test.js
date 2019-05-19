@@ -8,3 +8,12 @@ describe('toCamelCase()', () => {
     expect(res).toEqual({ foo: 'bar', bazBoz: 'Tiz' })
   })
 })
+
+describe('toPascalCase()', () => {
+  it('changes all keys in objects to pascal case', () => {
+    const data = { foo: 'bar', bazBoz: 'Tiz' }
+    const res = util.toPascalCase(data)
+
+    expect(res).toEqual({ Foo: 'bar', BazBoz: 'Tiz' })
+  })
+})
