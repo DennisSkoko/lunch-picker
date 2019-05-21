@@ -7,6 +7,10 @@ custom:
   s3Sync:
     - bucketName: ${self:resources.Resources.WebAssets.Properties.BucketName}
       localDir: ../app-web/build
+  env:
+    node:
+      dev: development
+      prod: production
 
 provider:
   name: aws
@@ -29,7 +33,7 @@ functions:
           path: /graphql
           method: ANY
     environment:
-      NODE_ENV: production
+      NODE_ENV: ${self:custom.env.node.${self:provider.stage}}
       RESTAURANT_TABLE: !Ref RestaurantTable
 
 resources:
