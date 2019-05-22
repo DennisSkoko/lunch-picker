@@ -54,7 +54,7 @@ resources:
             - Effect: Allow
               Action:
                 - s3:GetObject
-              Resource: !Join ['', ['arn:aws:s3:::', !Ref WebAssets, '/*']]
+              Resource: !Join ['', [!GetAtt WebAssets.Arn, '/*']]
               Principal: '*'
 
     RestaurantTable:
