@@ -24,6 +24,8 @@ provider:
         - dynamodb:GetItem
         - dynamodb:PutItem
       Resource: !GetAtt RestaurantTable.Arn
+  apiKeys:
+    - ${self:service}-${self:provider.stage}-app-web
 
 functions:
   api:
@@ -32,6 +34,7 @@ functions:
       - http:
           path: /graphql
           method: ANY
+          private: true
     environment:
       NODE_ENV: ${self:custom.env.node.${self:provider.stage}}
       RESTAURANT_TABLE: !Ref RestaurantTable
