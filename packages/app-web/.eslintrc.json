@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/recommended",
+    "standard",
+    "standard-react"
+  ]
+}
