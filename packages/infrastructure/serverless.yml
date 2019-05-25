@@ -35,6 +35,7 @@ functions:
           path: /graphql
           method: ANY
           private: true
+          cors: true
     environment:
       NODE_ENV: ${self:custom.env.node.${self:provider.stage}}
       RESTAURANT_TABLE: !Ref RestaurantTable
