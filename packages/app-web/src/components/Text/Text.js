@@ -16,7 +16,7 @@ Text.propTypes = {
   className: PropTypes.string
 }
 
-Text.propTypes = {
+Text.defaultProps = {
   children: null,
   className: null
 }

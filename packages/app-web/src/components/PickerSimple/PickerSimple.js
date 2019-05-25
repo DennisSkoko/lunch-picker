@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import Button from '../Button'
 import ContentFullscreen from '../ContentFullscreen'
 import Text from '../Text'
@@ -48,6 +49,10 @@ function PickerSimple ({ items }) {
       {!active && <Button onClick={handleClick}>Start</Button>}
     </ContentFullscreen>
   )
+}
+
+PickerSimple.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default PickerSimple

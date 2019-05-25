@@ -16,7 +16,7 @@ ContentFullscreen.propTypes = {
   className: PropTypes.string
 }
 
-ContentFullscreen.propTypes = {
+ContentFullscreen.defaultProps = {
   children: null,
   className: null
 }
