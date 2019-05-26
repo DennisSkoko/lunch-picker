@@ -1,6 +1,7 @@
 import React from 'react'
 import useRestaurants from '../../hooks/useRestaurants'
 import ErrorMessage from '../ErrorMessage'
+import Header from '../Header'
 import LoadingSpinner from '../LoadingSpinner'
 import PickerSimple from '../PickerSimple'
 
@@ -10,7 +11,12 @@ function App () {
   if (loading) return <LoadingSpinner />
   if (error) return <ErrorMessage />
 
-  return <PickerSimple items={restaurants.map(restaurant => restaurant.name)} />
+  return (
+    <>
+      <Header />
+      <PickerSimple items={restaurants.map(restaurant => restaurant.name)} />
+    </>
+  )
 }
 
 export default App
