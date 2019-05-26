@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './Sidebar.module.scss'
@@ -8,6 +8,15 @@ function Sidebar ({ active, children, onClose }) {
     if (onClose) onClose()
   }
 
+  const handleKeyDown = event => {
+    if (onClose && event.key === 'Escape') onClose()
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => { window.removeEventListener('keydown', handleKeyDown) }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <>
       <div
@@ -15,6 +24,9 @@ function Sidebar ({ active, children, onClose }) {
           [styles.active]: active
         })}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role='button'
+        tabIndex='0'
       />
 
       <aside
