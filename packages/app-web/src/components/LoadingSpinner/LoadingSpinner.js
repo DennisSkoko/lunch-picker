@@ -1,6 +1,6 @@
 import React from 'react'
 import ContentFullscreen from '../ContentFullscreen'
-import styles from './LoadingSpinner.module.css'
+import styles from './LoadingSpinner.module.scss'
 
 function LoadingSpinner () {
   return (

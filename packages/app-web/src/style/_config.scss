@@ -1,0 +1,38 @@
+/** Colors
+*******************************************************************************/
+$color-black-dark: #111;
+$color-black-base: #222;
+$color-black-light: #333;
+
+$color-gray-dark: #666;
+$color-gray-base: #888;
+$color-gray-light: #aaa;
+
+$color-white-dark: #ddd;
+$color-white-base: #eee;
+$color-white-light: #fff;
+
+/** Spacing
+*******************************************************************************/
+$spacing-xxs: .25rem;
+$spacing-xs: .5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2.5rem;
+$spacing-xl: 4rem;
+$spacing-xxl: 6rem;
+
+/** Typography
+*******************************************************************************/
+$font-family: sans-serif;
+
+$font-size-xl: 5rem;
+$font-size-lg: 3.1rem;
+
+/** Animation
+*******************************************************************************/
+$animation-duration-quick: 150ms;
+$animation-duration-normal: 250ms;
+$animation-duration-slow: 350ms;
+
+$animation-timing: ease;

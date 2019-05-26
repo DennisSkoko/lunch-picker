@@ -1,5 +1,4 @@
 import React from 'react'
-import 'normalize.css'
 import useRestaurants from '../../hooks/useRestaurants'
 import ErrorMessage from '../ErrorMessage'
 import LoadingSpinner from '../LoadingSpinner'
