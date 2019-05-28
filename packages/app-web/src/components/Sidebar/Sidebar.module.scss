@@ -19,7 +19,7 @@
 }
 
 .sidebar {
-  padding: $spacing-md;
+  padding: $spacing-md $spacing-md 0;
   width: 30rem;
   height: 100%;
   background-color: $color-white-light;
@@ -29,9 +29,14 @@
   z-index: -1;
   transform: translateX(30rem);
   transition: transform $animation-duration-normal $animation-timing;
+  overflow-y: auto;
 
   &.active {
     transform: none;
     z-index: 2;
   }
+}
+
+.spacing {
+  height: $spacing-md;
 }

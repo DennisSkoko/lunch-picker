@@ -35,6 +35,7 @@ function Sidebar ({ active, children, onClose }) {
         })}
       >
         {children}
+        <div className={styles.spacing} />
       </aside>
     </>
   )
