@@ -1,3 +1,9 @@
+@import './config';
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size;
 }

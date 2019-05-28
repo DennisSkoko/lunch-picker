@@ -45,7 +45,7 @@ function PickerSimple ({ items }) {
 
   return (
     <ContentFullscreen>
-      {active && <Text>{items[index]}</Text>}
+      {active && <Text size='xl'>{items[index]}</Text>}
       {!active && <Button onClick={handleClick}>Start</Button>}
     </ContentFullscreen>
   )

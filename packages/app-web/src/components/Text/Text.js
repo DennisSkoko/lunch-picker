@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './Text.module.scss'
 
-function Text ({ children, className }) {
+function Text ({ children, className, size }) {
   return (
-    <p className={classNames(className, styles.text)}>
+    <p className={classNames(className, styles.text, styles[size])}>
       {children}
     </p>
   )
@@ -13,12 +13,14 @@ function Text ({ children, className }) {
 
 Text.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['md', 'lg', 'xl'])
 }
 
 Text.defaultProps = {
   children: null,
-  className: null
+  className: null,
+  size: 'md'
 }
 
 export default Text
