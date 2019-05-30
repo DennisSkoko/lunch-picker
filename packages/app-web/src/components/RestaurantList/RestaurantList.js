@@ -1,17 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import useRestaurants from '../../hooks/useRestaurants'
-import LoadingSpinner from '../LoadingSpinner'
 import RestaurantListItem from '../RestaurantListItem'
 import styles from './RestaurantList.module.scss'
 
-function RestaurantList ({ className, ...props }) {
-  const { loading, data: restaurants } = useRestaurants()
-
-  if (loading) return <LoadingSpinner />
-  // TODO: Handle error
-
+function RestaurantList ({ className, restaurants, ...props }) {
   return (
     <ul {...props} className={classNames(className, styles.list)}>
       {restaurants.map(restaurant => (
@@ -24,7 +17,10 @@ function RestaurantList ({ className, ...props }) {
 }
 
 RestaurantList.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  restaurants: PropTypes
+    .arrayOf(RestaurantListItem.propTypes.restaurant)
+    .isRequired
 }
 
 RestaurantList.defaultProps = {

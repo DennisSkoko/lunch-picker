@@ -13,7 +13,7 @@ function App () {
 
   return (
     <>
-      <Header />
+      <Header restaurants={restaurants} />
       <PickerSimple items={restaurants.map(restaurant => restaurant.name)} />
     </>
   )
