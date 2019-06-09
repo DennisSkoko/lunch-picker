@@ -20,7 +20,8 @@
 
 .sidebar {
   padding: $spacing-md $spacing-md 0;
-  width: 30rem;
+  max-width: 30rem;
+  width: 100%;
   height: 100%;
   background-color: $color-white-light;
   position: fixed;
@@ -39,4 +40,26 @@
 
 .spacing {
   height: $spacing-md;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    padding: $spacing-xs;
+  }
+
+  svg {
+    display: block;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  @media #{$medium-and-up} {
+    display: none;
+  }
 }

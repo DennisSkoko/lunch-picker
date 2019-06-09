@@ -39,3 +39,9 @@ $animation-duration-normal: 250ms;
 $animation-duration-slow: 350ms;
 
 $animation-timing: ease;
+
+/** Breakpoints
+*******************************************************************************/
+$medium: 768px;
+
+$medium-and-up: "screen and (min-width: #{$medium})";
