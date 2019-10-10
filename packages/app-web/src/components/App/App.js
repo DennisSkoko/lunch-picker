@@ -1,21 +1,27 @@
 import React from 'react'
-import useRestaurants from '../../hooks/useRestaurants'
 import ErrorMessage from '../ErrorMessage'
 import Header from '../Header'
 import LoadingSpinner from '../LoadingSpinner'
-import PickerSimple from '../PickerSimple'
+import RestaurantPicker from '../RestaurantPicker'
+import { RestaurantProvider } from '../Restaurants'
 
 function App () {
-  const { loading, data: restaurants, error } = useRestaurants()
-
-  if (loading) return <LoadingSpinner />
-  if (error) return <ErrorMessage />
-
   return (
-    <>
-      <Header restaurants={restaurants} />
-      <PickerSimple items={restaurants.map(restaurant => restaurant.name)} />
-    </>
+    <RestaurantProvider>
+      {([{ loading, error, restaurants }]) => (
+        <>
+          {loading && <LoadingSpinner />}
+          {error && <ErrorMessage />}
+
+          {restaurants && (
+            <>
+              <Header />
+              <RestaurantPicker />
+            </>
+          )}
+        </>
+      )}
+    </RestaurantProvider>
   )
 }
 

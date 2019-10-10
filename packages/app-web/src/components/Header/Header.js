@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar'
 import RestaurantList from '../RestaurantList'
 import styles from './Header.module.scss'
 
-function Header ({ restaurants }) {
+function Header () {
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
@@ -21,14 +21,10 @@ function Header ({ restaurants }) {
         active={showSidebar}
         onClose={() => setShowSidebar(false)}
       >
-        <RestaurantList restaurants={restaurants} />
+        <RestaurantList />
       </Sidebar>
     </>
   )
-}
-
-Header.propTypes = {
-  restaurants: RestaurantList.propTypes.restaurants
 }
 
 export default Header

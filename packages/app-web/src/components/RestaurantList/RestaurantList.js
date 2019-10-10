@@ -2,9 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import RestaurantListItem from '../RestaurantListItem'
+import useRestaurants from '../Restaurants'
 import styles from './RestaurantList.module.scss'
 
-function RestaurantList ({ className, restaurants, ...props }) {
+function RestaurantList ({ className, ...props }) {
+  const [{ restaurants }] = useRestaurants()
+
   return (
     <ul {...props} className={classNames(className, styles.list)}>
       {restaurants.map(restaurant => (
@@ -17,10 +20,7 @@ function RestaurantList ({ className, restaurants, ...props }) {
 }
 
 RestaurantList.propTypes = {
-  className: PropTypes.string,
-  restaurants: PropTypes
-    .arrayOf(RestaurantListItem.propTypes.restaurant)
-    .isRequired
+  className: PropTypes.string
 }
 
 RestaurantList.defaultProps = {
