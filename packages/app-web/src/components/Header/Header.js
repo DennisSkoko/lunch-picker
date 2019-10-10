@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { ReactComponent as MenuSvg } from '../../res/menu.svg'
 import HeaderBar from '../HeaderBar'
 import HeaderBarItem from '../HeaderBarItem'
@@ -8,6 +8,8 @@ import styles from './Header.module.scss'
 
 function Header () {
   const [showSidebar, setShowSidebar] = useState(false)
+
+  const handleClose = useCallback(() => setShowSidebar(false), [])
 
   return (
     <>
@@ -19,7 +21,7 @@ function Header () {
 
       <Sidebar
         active={showSidebar}
-        onClose={() => setShowSidebar(false)}
+        onClose={handleClose}
       >
         <RestaurantList />
       </Sidebar>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { ReactComponent as CloseSvg } from '../../res/close.svg'
@@ -9,14 +9,14 @@ function Sidebar ({ active, children, onClose }) {
     if (onClose) onClose()
   }
 
-  const handleKeyDown = event => {
+  const handleKeyDown = useCallback(event => {
     if (onClose && event.key === 'Escape') onClose()
-  }
+  }, [onClose])
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown)
     return () => { window.removeEventListener('keydown', handleKeyDown) }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [handleKeyDown])
 
   return (
     <>
