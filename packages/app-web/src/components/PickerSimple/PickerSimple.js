@@ -8,45 +8,52 @@ const ITERATIONS = 15
 const ITERATION_INTERVAL = 150
 
 function random (length) {
-  return () => Math.round(Math.random() * length)
-}
-
-function loop (iterations, setIndex, random) {
-  ++iterations.current
-
-  if (iterations.current < ITERATIONS) {
-    setIndex(currentIndex => {
-      let newIndex = null
-
-      do { newIndex = random() }
-      while (currentIndex === newIndex)
-
-      return newIndex
-    })
-
-    setTimeout(() => {
-      loop(iterations, setIndex, random)
-    }, ITERATION_INTERVAL)
-  }
+  return Math.round(Math.random() * length)
 }
 
 function PickerSimple ({ items }) {
+  const loopId = useRef(null)
   const iterations = useRef(0)
   const [active, setActive] = useState(false)
-  const [index, setIndex] = useState(random(items.length - 1)())
+  const [index, setIndex] = useState(random(items.length - 1))
 
-  const handleClick = () => {
+  const loop = () => {
+    ++iterations.current
+
+    if (iterations.current < ITERATIONS) {
+      setIndex(currentIndex => {
+        let newIndex = null
+
+        do { newIndex = random(items.length - 1) }
+        while (currentIndex === newIndex)
+
+        return newIndex
+      })
+
+      loopId.current = setTimeout(() => {
+        loop()
+      }, ITERATION_INTERVAL)
+    }
+  }
+
+  const handleTextClick = () => {
+    setActive(false)
+    iterations.current = 0
+    clearTimeout(loopId.current)
+  }
+
+  const handleButtonClick = () => {
     setActive(true)
 
-    setTimeout(() => {
-      loop(iterations, setIndex, random(items.length - 1))
+    loopId.current = setTimeout(() => {
+      loop()
     }, ITERATION_INTERVAL)
   }
 
   return (
     <ContentFullscreen>
-      {active && <Text size='xl'>{items[index]}</Text>}
-      {!active && <Button onClick={handleClick}>Start</Button>}
+      {active && <Text size='xl' onClick={handleTextClick}>{items[index]}</Text>}
+      {!active && <Button onClick={handleButtonClick}>Start</Button>}
     </ContentFullscreen>
   )
 }

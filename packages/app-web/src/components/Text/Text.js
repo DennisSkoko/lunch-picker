@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import styles from './Text.module.scss'
 
-function Text ({ children, className, size }) {
+function Text ({ children, className, size, ...props }) {
   return (
-    <p className={classNames(className, styles.text, styles[size])}>
+    <p {...props} className={classNames(className, styles.text, styles[size])}>
       {children}
     </p>
   )
