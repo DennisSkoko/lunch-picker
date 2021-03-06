@@ -1,0 +1,48 @@
+type Query {
+  restaurants(
+    geoLocation: GeoLocation!,
+    filter: RestaurantFilter,
+    pageToken: String
+  ): RestaurantPageResult
+}
+
+
+type RestaurantPageResult {
+  items: [Restaurant!]!
+  pageToken: String
+}
+
+type Restaurant {
+  id: ID!
+  name: String!
+  address: String!
+  price: Price!
+  rating: Rating!
+}
+
+type Price {
+  level: Int
+}
+
+type Rating {
+  reviewsCount: Int!
+  level: Float!
+}
+
+
+input GeoLocation {
+  latitude: Float!
+  longitude: Float!
+}
+
+input RestaurantFilter {
+  price: PriceRange
+  openNow: Boolean
+  "Specify the radius in meters"
+  radius: Int
+}
+
+input PriceRange {
+  min: Int
+  max: Int
+}

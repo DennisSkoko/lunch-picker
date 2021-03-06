@@ -1,0 +1,9 @@
+# npm
+node_modules
+npm-debug.log*
+
+# aws-cdk
+cdk.out
+
+# env
+.env

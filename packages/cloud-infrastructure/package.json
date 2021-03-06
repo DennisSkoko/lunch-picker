@@ -1,0 +1,23 @@
+{
+  "name": "@lunch-picker/cloud-infrastructure",
+  "version": "0.0.0",
+  "description": "Builds the whole infrastructure in the AWS",
+  "private": true,
+  "scripts": {
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "lint": "tsc"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-appsync": "^1.92.0",
+    "@aws-cdk/aws-lambda": "^1.92.0",
+    "@aws-cdk/aws-secretsmanager": "^1.92.0",
+    "@aws-cdk/core": "^1.92.0",
+    "aws-cdk": "^1.92.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "typescript": "^4.2.2"
+  }
+}
