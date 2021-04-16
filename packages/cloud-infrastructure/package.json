@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "cdk deploy",
     "destroy": "cdk destroy",
-    "lint": "tsc"
+    "lint": "tsc && eslint ."
   },
   "dependencies": {
     "@aws-cdk/aws-appsync": "^1.92.0",
@@ -17,7 +17,16 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
+    "@lunch-picker/eslint-config": "file:../eslint-config",
+    "@lunch-picker/tsconfig": "file:../tsconfig",
     "@types/node": "^14.14.31",
+    "eslint": "^7.24.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
     "typescript": "^4.2.2"
   }
 }

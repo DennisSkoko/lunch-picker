@@ -1,0 +1,7 @@
+{
+  "name": "@lunch-picker/tsconfig",
+  "version": "0.0.0",
+  "description": "Provides configurations for TypeScript",
+  "private": true,
+  "main": "tsconfig.json"
+}

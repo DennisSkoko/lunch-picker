@@ -1,0 +1,4 @@
+{
+  "extends": "@lunch-picker/eslint-config",
+  "ignorePatterns": ["cdk.out"]
+}

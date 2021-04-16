@@ -3,10 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "description": "Helps people decide where to go and eat",
-  "scripts": {
-    "start": "lerna bootstrap"
-  },
-  "dependencies": {
-    "lerna": "^3.22.1"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }

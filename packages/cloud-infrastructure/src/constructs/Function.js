@@ -15,8 +15,8 @@ class Function extends lambda.Function {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: `src/handlers/${props.handler}/index.handler`,
       code: lambda.Code.fromAsset(
-        path.resolve(`${__dirname}/../../../${props.project}`)
-      )
+        path.resolve(__dirname, '../../../', props.project)
+      ),
     })
   }
 }

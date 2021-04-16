@@ -25,7 +25,7 @@ async function handler({ geoLocation, filter, pageToken }) {
     opennow: (filter && filter.openNow) || undefined,
     minprice: filter && filter.price && filter.price.min,
     maxprice: filter && filter.price && filter.price.max,
-    pagetoken: pageToken
+    pagetoken: pageToken,
   })
 
   const response = await fetch(`${endpoint}?${queryParams}`)
@@ -36,23 +36,24 @@ async function handler({ geoLocation, filter, pageToken }) {
     throw new Error(message)
   }
 
-  const data = /** @type {import('./handler.types').GcpPlacesApiResponseBody} */
+  const data =
+    /** @type {import('./handler.types').GcpPlacesApiResponseBody} */
     (await response.json())
 
   return {
-    items: data.results.map(result => ({
+    items: data.results.map((result) => ({
       id: result.place_id,
       name: result.name,
       address: result.vicinity,
       price: {
-        level: result.price_level
+        level: result.price_level,
       },
       rating: {
         level: result.rating,
-        reviewsCount: result.user_ratings_total
-      }
+        reviewsCount: result.user_ratings_total,
+      },
     })),
-    pageToken: data.next_page_token
+    pageToken: data.next_page_token,
   }
 }
 

@@ -16,11 +16,12 @@ function main() {
 
   const app = new core.App()
 
+  // eslint-disable-next-line no-new
   new Stack(app, process.env.LP_STACK_NAME, {
     env: {
       account: process.env.CDK_DEPLOY_ACCOUNT,
-      region: process.env.CDK_DEPLOY_REGION
-    }
+      region: process.env.CDK_DEPLOY_REGION,
+    },
   })
 }
 

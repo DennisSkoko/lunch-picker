@@ -1,6 +1,9 @@
 'use strict'
 
-const { SecretsManagerClient, GetSecretValueCommand } = require('@aws-sdk/client-secrets-manager')
+const {
+  SecretsManagerClient,
+  GetSecretValueCommand,
+} = require('@aws-sdk/client-secrets-manager')
 
 const client = new SecretsManagerClient({ apiVersion: '2017-10-17' })
 

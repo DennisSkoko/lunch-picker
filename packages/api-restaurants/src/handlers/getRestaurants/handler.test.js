@@ -17,7 +17,7 @@ const originalEnv = { ...process.env }
 function createMockResponse({ status = 200, body }) {
   return /** @type {import('node-fetch').Response} */ ({
     ok: status === 200,
-    json: async () => body
+    json: async () => body,
   })
 }
 
@@ -48,9 +48,9 @@ it('returns an array of restaurants from Google Places API', async () => {
         price_level: 2,
         rating: 3,
         user_ratings_total: 230,
-        vicinity: 'Bar'
-      }
-    ]
+        vicinity: 'Bar',
+      },
+    ],
   }
 
   mocked(fetch).mockResolvedValue(
@@ -66,14 +66,14 @@ it('returns an array of restaurants from Google Places API', async () => {
         name: 'Foo',
         address: 'Bar',
         price: {
-          level: 2
+          level: 2,
         },
         rating: {
           level: 3,
-          reviewsCount: 230
-        }
-      }
-    ]
+          reviewsCount: 230,
+        },
+      },
+    ],
   })
 })
 
@@ -105,7 +105,7 @@ it('can take a page token for querying more restaurants', async () => {
 
   await handler({
     geoLocation: { latitude: 1, longitude: 1 },
-    pageToken: 'mock-page-token'
+    pageToken: 'mock-page-token',
   })
 
   expect(fetch).toHaveBeenCalledWith(
@@ -118,7 +118,7 @@ it('allows for configuring the radius that is listed', async () => {
 
   await handler({
     geoLocation: { latitude: 1, longitude: 1 },
-    filter: { radius: 50 }
+    filter: { radius: 50 },
   })
 
   expect(fetch).toHaveBeenCalledWith(expect.stringContaining('radius=50'))
@@ -137,7 +137,7 @@ it('allows for seaching only the restaurants that are open now', async () => {
 
   await handler({
     geoLocation: { latitude: 1, longitude: 1 },
-    filter: { openNow: true }
+    filter: { openNow: true },
   })
 
   expect(fetch).toHaveBeenCalledWith(expect.stringContaining('opennow=true'))
@@ -148,7 +148,7 @@ it('allows for configuring the price range that is listed', async () => {
 
   await handler({
     geoLocation: { latitude: 1, longitude: 1 },
-    filter: { price: { min: 1, max: 3 } }
+    filter: { price: { min: 1, max: 3 } },
   })
 
   expect(fetch).toHaveBeenCalledWith(expect.stringContaining('minprice=1'))

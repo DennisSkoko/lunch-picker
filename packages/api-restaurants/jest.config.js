@@ -2,5 +2,5 @@
 
 module.exports = {
   testEnvironment: 'node',
-  resetMocks: true
+  resetMocks: true,
 }

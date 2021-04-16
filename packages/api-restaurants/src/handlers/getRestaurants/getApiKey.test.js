@@ -1,7 +1,10 @@
 'use strict'
 
 const { mocked } = require('ts-jest/utils')
-const { GetSecretValueCommand, SecretsManagerClient } = require('@aws-sdk/client-secrets-manager')
+const {
+  GetSecretValueCommand,
+  SecretsManagerClient,
+} = require('@aws-sdk/client-secrets-manager')
 const getApiKey = require('./getApiKey')
 
 jest.mock('@aws-sdk/client-secrets-manager')
@@ -14,7 +17,8 @@ beforeAll(() => {
 })
 
 beforeEach(() => {
-  process.env.LP_GCP_PLACES_API_KEY_SECRET_ARN = 'mock-lp-gcp-places-api-key-secret-arn'
+  process.env.LP_GCP_PLACES_API_KEY_SECRET_ARN =
+    'mock-lp-gcp-places-api-key-secret-arn'
 })
 
 afterEach(() => {
@@ -35,7 +39,7 @@ it('returns the api key for the secrets manager', async () => {
 
   expect(res).toBe('mock-api-key')
   expect(GetSecretValueCommand).toHaveBeenCalledWith({
-    SecretId: 'mock-lp-gcp-places-api-key-secret-arn'
+    SecretId: 'mock-lp-gcp-places-api-key-secret-arn',
   })
 })
 
