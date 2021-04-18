@@ -7,3 +7,9 @@ cdk.out
 
 # env
 .env
+
+# build files
+build
+
+# misc
+.DS_Store

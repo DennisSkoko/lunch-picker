@@ -1,0 +1,7 @@
+{
+  "extends": "@lunch-picker/tsconfig",
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM"]
+  },
+  "include": ["src"]
+}

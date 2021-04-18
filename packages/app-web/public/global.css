@@ -1,0 +1,44 @@
+:root {
+  --spacing-xl: 3em;
+  --spacing-lg: 1.5em;
+  --spacing-md: 1em;
+  --spacing-sm: .5em;
+  --spacing-xs: .25em;
+
+  --font-family-heading: 'Acme', sans-serif;
+  --font-family-body: 'Montserrat', sans-serif;
+
+  --font-size-heading-h1: 3.25rem;
+  --font-size-heading-h2: 2.75rem;
+  --font-size-heading-h3: 2.25rem;
+  --font-size-heading-h4: 2rem;
+  --font-size-heading-h5: 1.75rem;
+  --font-size-heading-h6: 1.5rem;
+  --font-size-heading-weight: bold;
+
+  --font-size-body: 1.5rem;
+
+  --color-primary: rgb(10, 10, 10);
+  --color-primary-light: rgb(85, 85, 85);
+
+  --color-background: rgb(245, 245, 245);
+  --color-text: rgb(10, 10, 10);
+
+  --color-dimmer: rgba(0, 0, 0, .8);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+    --color-primary: rgb(245, 245, 245);
+    --color-primary-light: rgb(180, 180, 180);
+
+    --color-background: rgb(20, 20, 20);
+    --color-text: rgb(245, 245, 245);
+
+    --color-dimmer: rgba(0, 0, 0, .8);
+	}
+}
+
+html {
+  background-color: var(--color-background);
+}
