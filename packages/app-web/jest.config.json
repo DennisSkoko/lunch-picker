@@ -1,3 +1,4 @@
 {
-  "resetMocks": true
+  "resetMocks": true,
+  "setupFilesAfterEnv": ["@testing-library/jest-dom"]
 }
