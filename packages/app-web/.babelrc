@@ -1,8 +1,5 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "corejs": "3.10",
-      "useBuiltIns": "usage"
-    }]
+    ["@babel/preset-env", { "corejs": "3.10", "useBuiltIns": "usage" }]
   ]
 }
