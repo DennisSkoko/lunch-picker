@@ -21,6 +21,7 @@
 
     /* Advanced Options */
     "skipLibCheck": true,
+    "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true
   }
 }
