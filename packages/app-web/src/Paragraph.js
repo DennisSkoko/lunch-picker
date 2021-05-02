@@ -8,8 +8,12 @@ template.innerHTML = `
       margin: 0;
     }
 
-    :host([size="large"]) p {
+    :host([size="lg"]) p {
       font-size: var(--font-size-body-lg);
+    }
+
+    :host([size="xl"]) p {
+      font-size: var(--font-size-body-xl);
     }
 
     :host(:not(:last-child)) p {

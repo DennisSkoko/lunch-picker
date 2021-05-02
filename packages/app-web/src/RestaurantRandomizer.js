@@ -64,7 +64,7 @@ export class RestaurantRandomizer extends HTMLElement {
           const restaurant = restaurants[getRandomNumber(restaurants.length)]
 
           const element = new Paragraph()
-          element.setAttribute('size', 'large')
+          element.setAttribute('size', 'xl')
           element.innerText = restaurant.name
           root.appendChild(element)
         } catch (err) {
