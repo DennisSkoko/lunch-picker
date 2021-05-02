@@ -16,7 +16,8 @@
   --font-size-heading-h6: 1.5rem;
   --font-size-heading-weight: bold;
 
-  --font-size-body: 1.5rem;
+  --font-size-body-lg: 2.25rem;
+  --font-size-body-md: 1.5rem;
 
   --color-primary: rgb(10, 10, 10);
   --color-primary-light: rgb(85, 85, 85);

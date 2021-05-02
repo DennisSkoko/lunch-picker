@@ -3,9 +3,13 @@ template.innerHTML = `
   <style>
     p {
       font-family: var(--font-family-body);
-      font-size: var(--font-size-body);
+      font-size: var(--font-size-body-md);
       color: var(--color-text);
       margin: 0;
+    }
+
+    :host([size="large"]) p {
+      font-size: var(--font-size-body-lg);
     }
 
     :host(:not(:last-child)) p {
