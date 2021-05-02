@@ -1,5 +1,42 @@
 'use strict'
 
+/**
+ * @typedef {object} GeoLocation
+ * @property {number} latitude
+ * @property {number} longitude
+ */
+
+/**
+ * @typedef {0 | 1 | 2 | 3 | 4} Price
+ */
+
+/**
+ * @typedef {object} Filter
+ * @property {{ min?: Price, max?: Price }} [price]
+ * @property {boolean} [openNow]
+ * @property {number} [radius]
+ */
+
+/**
+ * @typedef {object} Restaurant
+ * @property {string} id
+ * @property {string} name
+ * @property {string} address
+ * @property {{ level?: Price }} price
+ * @property {{ reviewsCount: number, level: number }} rating
+ */
+
+/**
+ * @typedef {object} ApiResponse
+ * @property {{ restaurants: { pageToken?: string, items: Restaurant[] } }} data
+ */
+
+/**
+ * @typedef {object} GetRestaurantsParams
+ * @property {GeoLocation} geoLocation
+ * @property {Filter} [filter]
+ */
+
 const query = `
   query MyQuery(
     $geoLocation: GeoLocation!,
@@ -29,10 +66,10 @@ const query = `
 `
 
 /**
- * @param {import('./getRestaurants.types').GetRestaurantsParams} params
+ * @param {GetRestaurantsParams} params
  */
 async function getRestaurants({ geoLocation, filter }) {
-  /** @type {import('./getRestaurants.types').Restaurant[]} */
+  /** @type {Restaurant[]} */
   let restaurants = []
   /** @type {string | undefined} */
   let pageToken
@@ -53,7 +90,7 @@ async function getRestaurants({ geoLocation, filter }) {
       throw new Error(message)
     }
 
-    const { data } = /** @type {import('./getRestaurants.types').ApiResponse} */ (await res.json())
+    const { data } = /** @type {ApiResponse} */ (await res.json())
 
     restaurants = [...restaurants, ...data.restaurants.items]
     pageToken = data.restaurants.pageToken

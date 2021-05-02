@@ -45,7 +45,7 @@ export class RestaurantRandomizer extends HTMLElement {
   constructor() {
     super()
 
-    /** @type {Promise<import('./getRestaurants.types').Restaurant[]>} */
+    /** @type {Promise<import('./getRestaurants').Restaurant[]>} */
     this.restaurants
   }
 

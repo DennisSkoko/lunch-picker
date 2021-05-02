@@ -1,4 +1,3 @@
-import { mocked } from 'ts-jest/utils'
 import getRestaurants from './getRestaurants'
 
 /** @type {jest.MockedFunction<typeof window.fetch>} */
@@ -18,7 +17,7 @@ it('fetches all restaurants near the given geo location', async () => {
   const response = /** @type {Response} */ ({
     ok: true,
     /**
-     * @returns {Promise<import('./getRestaurants.types').ApiResponse>}
+     * @returns {Promise<import('./getRestaurants').ApiResponse>}
      */
     json: async () => ({
       data: {
@@ -59,7 +58,7 @@ it('fetches from the configured API with the configured API key', async () => {
   const response = /** @type {Response} */ ({
     ok: true,
     /**
-     * @returns {Promise<import('./getRestaurants.types').ApiResponse>}
+     * @returns {Promise<import('./getRestaurants').ApiResponse>}
      */
     json: async () => ({
       data: { restaurants: { pageToken: undefined, items: [] } }
@@ -99,7 +98,7 @@ it('keeps fetching restaurants until page token is empty', async () => {
   const firstResponse = /** @type {Response} */ ({
     ok: true,
     /**
-     * @returns {Promise<import('./getRestaurants.types').ApiResponse>}
+     * @returns {Promise<import('./getRestaurants').ApiResponse>}
      */
     json: async () => ({
       data: {
@@ -122,7 +121,7 @@ it('keeps fetching restaurants until page token is empty', async () => {
   const secondResponse = /** @type {Response} */ ({
     ok: true,
     /**
-     * @returns {Promise<import('./getRestaurants.types').ApiResponse>}
+     * @returns {Promise<import('./getRestaurants').ApiResponse>}
      */
     json: async () => ({
       data: {
