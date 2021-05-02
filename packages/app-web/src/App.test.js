@@ -1,5 +1,7 @@
 import { App } from './App'
 
+jest.mock('./getRestaurants')
+
 /** @type {jest.MockedFunction<typeof navigator.geolocation.getCurrentPosition>} */
 let mockGetCurrentPosition = jest.fn()
 

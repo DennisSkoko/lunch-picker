@@ -1,4 +1,6 @@
+import getRestaurants from './getRestaurants'
 import './Paragraph'
+import { RestaurantRandomizer } from './RestaurantRandomizer'
 import './SectionCentered'
 
 const template = document.createElement('template')
@@ -25,9 +27,7 @@ export class App extends HTMLElement {
     super()
 
     /** @private */
-    this.rendered = false;
-    /** @private @type {{ latitude: number, longitude: number } | null} */
-    this.geoLocation = null
+    this.rendered = false
 
     this.attachShadow({ mode: 'open' })
   }
@@ -38,12 +38,23 @@ export class App extends HTMLElement {
       this.shadowRoot?.append(template.content.cloneNode(true))
 
       navigator.geolocation.getCurrentPosition(geoLocation => {
-        this.geoLocation = {
-          latitude: geoLocation.coords.latitude,
-          longitude: geoLocation.coords.longitude,
-        }
+        const restaurants = getRestaurants({
+          geoLocation: {
+            latitude: geoLocation.coords.latitude,
+            longitude: geoLocation.coords.longitude,
+          },
+          filter: {
+            radius: 1000,
+            openNow: true,
+          },
+        })
 
         this.shadowRoot?.querySelector('lp-paragraph')?.remove()
+
+        const restaurantRandomizer = new RestaurantRandomizer()
+        restaurantRandomizer.restaurants = restaurants
+
+        this.shadowRoot?.querySelector('div')?.appendChild(restaurantRandomizer)
       })
     }
   }
