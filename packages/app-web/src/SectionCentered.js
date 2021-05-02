@@ -1,5 +1,5 @@
-const style = document.createElement('template')
-style.innerHTML = `
+const template = document.createElement('template')
+template.innerHTML = `
   <style>
     :host {
       height: 100vh;
@@ -9,27 +9,16 @@ style.innerHTML = `
       align-items: center;
     }
   </style>
-`
 
-const template = document.createElement('template')
-template.innerHTML = `
   <slot></slot>
 `
 
 export class SectionCentered extends HTMLElement {
-  constructor() {
-    super()
-
-    /** @private */
-    this.rendered = false
-
-    this.attachShadow({ mode: 'open' })
-  }
-
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.shadowRoot?.appendChild(style.content.cloneNode(true))
-      this.shadowRoot?.appendChild(template.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      this
+        .attachShadow({ mode: 'open' })
+        .appendChild(template.content.cloneNode(true))
     }
   }
 }

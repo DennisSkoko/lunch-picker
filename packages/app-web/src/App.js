@@ -23,19 +23,10 @@ template.innerHTML = `
 `
 
 export class App extends HTMLElement {
-  constructor() {
-    super()
-
-    /** @private */
-    this.rendered = false
-
-    this.attachShadow({ mode: 'open' })
-  }
-
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.rendered = true
-      this.shadowRoot?.append(template.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      const root = this.attachShadow({ mode: 'open' })
+      root.append(template.content.cloneNode(true))
 
       navigator.geolocation.getCurrentPosition(geoLocation => {
         const restaurants = getRestaurants({
@@ -49,12 +40,12 @@ export class App extends HTMLElement {
           },
         })
 
-        this.shadowRoot?.querySelector('lp-paragraph')?.remove()
+        root.querySelector('lp-paragraph')?.remove()
 
         const restaurantRandomizer = new RestaurantRandomizer()
         restaurantRandomizer.restaurants = restaurants
 
-        this.shadowRoot?.querySelector('div')?.appendChild(restaurantRandomizer)
+        root.querySelector('div')?.appendChild(restaurantRandomizer)
       })
     }
   }

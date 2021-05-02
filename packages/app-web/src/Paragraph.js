@@ -27,18 +27,11 @@ template.innerHTML = `
 `
 
 export class Paragraph extends HTMLElement {
-  constructor() {
-    super()
-
-    /** @private */
-    this.rendered = false
-
-    this.attachShadow({ mode: 'open' })
-  }
-
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.shadowRoot?.appendChild(template.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      this
+        .attachShadow({ mode: 'open' })
+        .appendChild(template.content.cloneNode(true))
     }
   }
 }

@@ -45,36 +45,32 @@ export class RestaurantRandomizer extends HTMLElement {
   constructor() {
     super()
 
-    /** @private */
-    this.rendered = false
     /** @type {Promise<import('./getRestaurants.types').Restaurant[]>} */
     this.restaurants
-
-    this.attachShadow({ mode: 'open' })
   }
 
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.rendered = true
-      this.shadowRoot?.append(template.main.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      const root = this.attachShadow({ mode: 'open' })
+      root.append(template.main.content.cloneNode(true))
 
-      this.shadowRoot?.querySelector('lp-button')?.addEventListener('click', async () => {
-        this.shadowRoot?.querySelector('lp-button')?.remove()
-        this.shadowRoot?.appendChild(template.loading.content.cloneNode(true))
+      root.querySelector('lp-button')?.addEventListener('click', async () => {
+        root.querySelector('lp-button')?.remove()
+        root.appendChild(template.loading.content.cloneNode(true))
 
         try {
           const restaurants = await this.restaurants
-          this.shadowRoot?.querySelector('lp-paragraph')?.remove()
+          root.querySelector('lp-paragraph')?.remove()
           const restaurant = restaurants[getRandomNumber(restaurants.length)]
 
           const element = new Paragraph()
           element.setAttribute('size', 'large')
           element.innerText = restaurant.name
-          this.shadowRoot?.appendChild(element)
+          root.appendChild(element)
         } catch (err) {
           console.error(err)
-          this.shadowRoot?.querySelector('lp-paragraph')?.remove()
-          this.shadowRoot?.appendChild(template.error.content.cloneNode(true))
+          root.querySelector('lp-paragraph')?.remove()
+          root.appendChild(template.error.content.cloneNode(true))
         }
       })
     }

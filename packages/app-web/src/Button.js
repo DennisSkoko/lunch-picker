@@ -26,19 +26,11 @@ template.innerHTML = `
 `
 
 export class Button extends HTMLElement {
-  constructor() {
-    super()
-
-    /** @private */
-    this.rendered = false
-
-    this.attachShadow({ mode: 'open' })
-  }
-
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.rendered = true
-      this.shadowRoot?.append(template.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      this
+        .attachShadow({ mode: 'open' })
+        .append(template.content.cloneNode(true))
     }
   }
 }

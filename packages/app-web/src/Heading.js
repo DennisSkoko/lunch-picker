@@ -43,19 +43,12 @@ export class Heading extends HTMLElement {
     return ['level']
   }
 
-  constructor() {
-    super()
-
-    /** @private */
-    this.rendered = false
-
-    this.attachShadow({ mode: 'open' })
-  }
-
   connectedCallback() {
-    if (!this.rendered && this.isConnected) {
-      this.rendered = true
-      this.shadowRoot?.appendChild(template.content.cloneNode(true))
+    if (!this.shadowRoot) {
+      this
+        .attachShadow({ mode: 'open' })
+        .appendChild(template.content.cloneNode(true))
+
       this.addHeadingEl()
     }
   }
@@ -65,10 +58,10 @@ export class Heading extends HTMLElement {
    * @param {string | null} oldValue
    */
   attributeChangedCallback(name, oldValue) {
-    if (this.rendered) {
+    if (this.shadowRoot) {
       switch (name) {
         case 'level':
-          this.shadowRoot?.querySelector(`h${oldValue || '1'}`)?.remove()
+          this.shadowRoot.querySelector(`h${oldValue || '1'}`)?.remove()
           this.addHeadingEl()
           break;
       }
