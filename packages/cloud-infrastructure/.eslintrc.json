@@ -1,4 +1,8 @@
 {
   "extends": "@lunch-picker/eslint-config",
-  "ignorePatterns": ["cdk.out"]
+  "ignorePatterns": ["cdk.out"],
+  "rules": {
+    // aws-cdk has a lot of usages of 'new' with side effects
+    "no-new": "off"
+  }
 }
